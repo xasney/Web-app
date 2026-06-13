@@ -1,0 +1,15 @@
+node_modules/
+.env
+.env.local
+.env.*.local
+dist/
+build/
+.next/
+.vscode/launch.json
+.vscode/settings.json
+*.log
+.DS_Store
+.turbo
+frontend/out/
+backend/.env
+docker-volumes/
