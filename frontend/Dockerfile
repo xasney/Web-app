@@ -3,9 +3,10 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Copy package files
+# Copy package files from root and workspaces
 COPY package*.json ./
 COPY frontend/package*.json frontend/
+COPY backend/package*.json backend/
 
 # Install dependencies
 RUN npm ci --workspace=frontend
