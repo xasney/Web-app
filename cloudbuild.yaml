@@ -1,14 +1,12 @@
 steps:
-  # Build backend image (run from backend directory so Dockerfile is found)
+  # Build backend image (use root context so Dockerfile can reference root package.json)
   - name: 'gcr.io/cloud-builders/docker'
-    dir: 'backend'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/devcloud-backend:latest', '.']
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/devcloud-backend:latest', '-f', 'backend/Dockerfile', '.']
     id: 'build-backend'
 
-  # Build frontend image (run from frontend directory)
+  # Build frontend image (use root context so Dockerfile can reference root package.json)
   - name: 'gcr.io/cloud-builders/docker'
-    dir: 'frontend'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/devcloud-frontend:latest', '.']
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/devcloud-frontend:latest', '-f', 'frontend/Dockerfile', '.']
     id: 'build-frontend'
 
   # Push backend image
